@@ -85,6 +85,7 @@ contract Staking is Ownable, ReentrancyGuard {
         uint256 timeElapsed = block.timestamp - user.lastUpdate;
         uint256 rewards = (timeElapsed * user.stakedAmount * rewardRate)/1e18;
         user.totalRewards += rewards;
+        user.lastUpdate = block.timestamp;
     }
 
 }
